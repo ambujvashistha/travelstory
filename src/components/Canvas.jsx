@@ -9,11 +9,11 @@ export default function Canvas(){
     const styles = {
   container: {
     position: "relative",
-    width: "100vh",
-    height: "100vh",
-    border: "1px solid white",
-    marginTop: "10px",
-    overflow: "hidden",
+    width: "800px",
+    height: "600px",
+    border: "1px solid black",
+    overflow: "auto",  // or "hidden" based on need
+    background: "#f9f9f9",
   },
   uploadButton: {
     padding: '8px 16px',
@@ -69,7 +69,7 @@ export default function Canvas(){
     return (
   <div>
     <div>
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
+      <input type="file" multiple accept="image/*" onChange={handleImageUpload} />
     </div>
 
     <div style={styles.container}>
@@ -88,6 +88,8 @@ export default function Canvas(){
             alignItems: "center",
             justifyContent: "center",
             cursor: "move",
+            bounds:"parent",
+            border:"1px solid black"
           }}
         >
           <img
