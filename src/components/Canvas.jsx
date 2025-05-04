@@ -7,9 +7,9 @@ export default function Canvas(){
             prevRnd=>({...prevRnd,x:direction.x,y:direction.y})
         )
     }
-    const setSize=(e,direction,ref,delta)=>{
+    const setSize=(e,direction,ref,delta,position)=>{
         setRnd(
-            prevRnd=>({...prevRnd,width:parseInt(ref.style.width),height:parseInt(ref.style.height)})
+            prevRnd=>({...prevRnd,width:parseInt(ref.style.width),height:parseInt(ref.style.height),...position})
         )
     }
     return(
