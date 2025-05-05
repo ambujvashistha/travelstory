@@ -30,8 +30,8 @@ export default function Canvas(){
     const styles = {
   container: {
     position: "relative",
-    width: "800px",
-    height: "600px",
+    width: "1280px",
+    height: "720px",
     border: "1px solid black",
     overflow: "auto",  // or "hidden" based on need
     background: "#f9f9f9",
@@ -135,7 +135,9 @@ export default function Canvas(){
         bounds="parent"
       />
     </div>
-    <button onClick={exportCanvasAsPDF}>Download as PDF</button>
+    <button onClick={exportCanvasAsPDF}>Export as PDF</button>
+    {/* <button onClick={handleExport}>Export as Video</button> */}
+
   </div>
 );
 
