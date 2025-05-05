@@ -1,10 +1,31 @@
 import React,{useState} from "react";
 import {Rnd} from 'react-rnd'
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
 export default function Canvas(){
 
     const [rnd,setRnd]=useState({width:"100px",height:"100px",x:10,y:10})
     const [images,setImages]=useState([])
 
+  const exportCanvasAsPDF = () => {
+  const element = document.getElementById("playground");
+  html2canvas(element, {
+    allowTaint: true,
+    useCORS: true,
+    backgroundColor: null,
+    scale: 2, // improves quality
+  }).then((canvas) => {
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF({
+      orientation: "landscape",
+      unit: "px",
+      format: [canvas.width, canvas.height],
+    });
+    pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+    pdf.save("playground.pdf");
+  });
+};
 
     const styles = {
   container: {
@@ -72,7 +93,7 @@ export default function Canvas(){
       <input type="file" multiple accept="image/*" onChange={handleImageUpload} />
     </div>
 
-    <div style={styles.container}>
+    <div style={styles.container} id="playground">
       {images.map((image) => (
         <Rnd
           key={image.id}
@@ -114,6 +135,7 @@ export default function Canvas(){
         bounds="parent"
       />
     </div>
+    <button onClick={exportCanvasAsPDF}>Download as PDF</button>
   </div>
 );
 
