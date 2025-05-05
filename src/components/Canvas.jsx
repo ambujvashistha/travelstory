@@ -14,7 +14,7 @@ export default function Canvas(){
     allowTaint: true,
     useCORS: true,
     backgroundColor: null,
-    scale: 2, // improves quality
+    scale: 2, 
   }).then((canvas) => {
     const imgData = canvas.toDataURL("image/png");
     const pdf = new jsPDF({
@@ -33,7 +33,7 @@ export default function Canvas(){
     width: "1280px",
     height: "720px",
     border: "1px solid black",
-    overflow: "auto",  // or "hidden" based on need
+    overflow: "auto",  
     background: "#f9f9f9",
   },
   uploadButton: {
